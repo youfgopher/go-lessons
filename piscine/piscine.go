@@ -1,10 +1,5 @@
 package piscine
 
-import (
-	"fmt"
-	"strings"
-)
-
 /*
 	Write a function that prints all possible combinations of n different digits in ascending order.
 	n will be defined as : 0 < n < 10
@@ -24,64 +19,79 @@ func PrintCombN(k int) {
 		sres = append(sres, aggregator(arr))
 	}
 
-	fmt.Printf("%v\n\n", trimArtefact(sres))
+	writer(sres)
 }
 
-func aggregator(arr []int) string {
-	length := len(arr)
-	var bufString string
+func writer(data []string) {
+	var sres string
+	var newLine = "\n"
+	var suffix = 2
 
-	for i := 0; i < length; i++ {
-		bufString += fmt.Sprintf("%v", arr[i])
+	for _, s := range data {
+		sres += s + " "
 	}
 
-	bufString += ","
+	sres = sres[:len(sres)-suffix]
+	sres += newLine
+
+	print(sres)
+}
+
+func aggregator(arr []int) (bufString string) {
+	length := len(arr)
+	delim := ","
+	for i := 0; i < length; i++ {
+		switch arr[i] {
+		case 0:
+			bufString += "0"
+		case 1:
+			bufString += "1"
+		case 2:
+			bufString += "2"
+		case 3:
+			bufString += "3"
+		case 4:
+			bufString += "4"
+		case 5:
+			bufString += "5"
+		case 6:
+			bufString += "6"
+		case 7:
+			bufString += "7"
+		case 8:
+			bufString += "8"
+		case 9:
+			bufString += "9"
+		case 10:
+			bufString += "10"
+
+		}
+	}
+	bufString += delim
 
 	return bufString
 }
 
-func trimArtefact(s []string) (res string) {
-	res = strings.Join(s, " ")
-	after, ok := strings.CutPrefix(res, "[")
-	if ok {
-		res = after
-	}
-
-	after, ok = strings.CutSuffix(res, ",]")
-	if ok {
-		res = after
-	}
-
-	after, ok = strings.CutSuffix(res, ",")
-	if ok {
-		res = after
-	}
-
-	return res
-}
-
 func combine(n int, k int) [][]int {
-	results := [][]int{}
-	if k > n {
-		return results
-	}
-
-	dfs([]int{}, n, k, 0, &results)
-	return results
+	return combineRecursive(1, n, k)
 }
 
-func dfs(buf []int, n, k, idx int, results *[][]int) {
-	if k == 0 {
-		tmp := make([]int, len(buf))
-		copy(tmp, buf)
-		*results = append(*results, tmp)
+func combineRecursive(min, max, k int) [][]int {
+	var out [][]int
+
+	if k == 1 {
+		for i := min; i <= max; i++ {
+			out = append(out, []int{i})
+		}
+
+		return out
 	}
 
-	for i := idx; i <= n; i++ {
-		buf = append(buf, i)
-
-		dfs(buf, n, k-1, i+1, results)
-
-		buf = buf[:len(buf)-1]
+	for i := min; i < max; i++ {
+		for _, line := range combineRecursive(i+1, max, k-1) {
+			out = append(out, append([]int{i}, line...))
+		}
 	}
+
+	return out
 }

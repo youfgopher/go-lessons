@@ -3,15 +3,33 @@
 **Topics:**
 
 - Program structure
-- Variables
-- Data types
-- Constants
-- Arithmetic operations
+- Variables // 
+- Data types //
+- Constants // 
+- Arithmetic operations 
 - Conditional expressions
-- Bitwise Operations
+- Bitwise Operations //
 - Conditional constructs
 - Loop
 
+Агрегатные типы данных - Массивы,срезы,мапы. Агрегатное - представляют совокупность объеденения примитивных типов
+
+
+
 - array
 - slice
-- map
+- map 
+
+```go
+    // dec + ass = shortassign
+    myMap := make(map[string]int)
+
+    
+
+```
+
+
+
+
+
+markdown all in one
