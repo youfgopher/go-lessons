@@ -24,8 +24,8 @@ func PrintCombN(k int) {
 
 func writer(data []string) {
 	var sres string
-	var newLine = "\n"
-	var suffix = 2
+	newLine := "\n"
+	suffix := 2
 
 	for _, s := range data {
 		sres += s + " "
