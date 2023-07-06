@@ -73,7 +73,7 @@ func aggregator(arr []int) (bufString string) {
 }
 
 func combine(n int, k int) [][]int {
-	return combineRecursive(1, n, k)
+	return combineRecursive(0, n, k)
 }
 
 func combineRecursive(min, max, k int) [][]int {
