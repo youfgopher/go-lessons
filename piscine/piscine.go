@@ -9,7 +9,7 @@ package piscine
 */
 
 // PrintCombN prints all possible combinations of n different digits in ascending order.
-func PrintCombN(k int) {
+	func PrintCombN(k int) {
 	const base = 10
 	var sres []string
 
