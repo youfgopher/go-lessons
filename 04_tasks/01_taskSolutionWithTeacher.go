@@ -41,7 +41,7 @@ func AddUniqueUserToMap(userData map[string]string, username, phone string) erro
 // PrintUserData on console
 func PrintUserData(userData map[string]string) {
 	for username, phone := range userData {
-		fmt.Printf("User, userusername: %s, phone: %s\n", username, phone)
+		fmt.Printf("User, username: %s, phone: %s\n", username, phone)
 	}
 }
 
