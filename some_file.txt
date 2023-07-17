@@ -1,0 +1,1 @@
+some text for writing in file
